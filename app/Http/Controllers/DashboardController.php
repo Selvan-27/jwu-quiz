@@ -6,6 +6,7 @@ use App\Models\Quiz;
 use App\Models\QuizAttempt;
 
 use App\Models\Prayer;
+use App\Models\Verse;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller

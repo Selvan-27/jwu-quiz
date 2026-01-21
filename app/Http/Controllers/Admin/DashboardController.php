@@ -14,6 +14,8 @@ class DashboardController extends Controller
             'total_quizzes' => \App\Models\Quiz::count(),
             'active_quizzes' => \App\Models\Quiz::where('is_active', true)->count(),
             'total_attempts' => \App\Models\QuizAttempt::count(),
+            'total_verse' =>\App\Models\Verse::count(),
+            'total_prayer' =>\App\Models\Prayer::count(),
             'today_attempts' => \App\Models\QuizAttempt::whereDate('created_at', today())->count(),
         ];
 
