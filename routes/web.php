@@ -40,11 +40,6 @@ Route::get('/jwu', function () {
 
 
 
-// Route::middleware('auth')->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
-
-
 
 // Protected Routes (Require Authentication)
 Route::middleware('auth')->group(function () {
@@ -95,6 +90,7 @@ Route::middleware('auth')->group(function () {
          Route::get('users/{user}/history', [\App\Http\Controllers\Admin\UserController::class, 'history'])->name('users.history');
         Route::resource('quizzes', \App\Http\Controllers\Admin\QuizController::class);
         Route::resource('prayer', \App\Http\Controllers\Admin\PrayerController::class);
+        Route::resource('verse', \App\Http\Controllers\Admin\VerseController::class);
         Route::resource('quizzes.questions', \App\Http\Controllers\Admin\QuestionController::class)->except(['index', 'show']);
         Route::get('reports', [\App\Http\Controllers\Admin\ReportController::class, 'index'])->name('reports.index');
         Route::get('reports/{quiz}', [\App\Http\Controllers\Admin\ReportController::class, 'show'])->name('reports.show');

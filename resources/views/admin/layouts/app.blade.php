@@ -87,6 +87,12 @@
                     <span>Prayer Points</span></a>
             </li>
         
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.verse.index') }}">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Bible Verse</span></a>
+            </li>
+            
             
             <hr class="sidebar-divider">
              <li class="nav-item">
