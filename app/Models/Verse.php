@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Prayer extends Model
+class Verse extends Model
 {
     
-    protected $table = 'prayers';
+    protected $table = 'verse';
     protected $primaryKey = 'id';
     
     protected $fillable = [
         'title',
         'description',
-        'prayerpoints',
         'is_active',
     ];
 }
