@@ -3,7 +3,7 @@
 @section('title', 'Create Prayerpoints')
 
 @section('content')
-    <h1 class="h3 mb-4 text-gray-800">New Verse</h1>
+    <h1 class="h3 mb-4 text-gray-800">New Memory Verse</h1>
 
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -17,7 +17,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.prayer.store') }}" method="POST">
+            <form action="{{ route('admin.verse.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label>Title</label>
@@ -37,8 +37,8 @@
                 <!--    <label class="form-check-label" for="isActive">Publish immediately (Active)</label>-->
                 <!--</div>-->
 
-                <button type="submit" class="btn btn-primary">Create Quiz</button>
-                <a href="{{ route('admin.prayer.index') }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Create Memory Verse</button>
+                <a href="{{ route('admin.verse.index') }}" class="btn btn-secondary">Cancel</a>
             </form>
         </div>
     </div>
