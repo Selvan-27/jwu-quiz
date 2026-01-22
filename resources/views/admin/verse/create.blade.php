@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Create Prayerpoints')
+@section('title', 'Create Memory Verse')
 
 @section('content')
     <h1 class="h3 mb-4 text-gray-800">New Memory Verse</h1>

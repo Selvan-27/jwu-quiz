@@ -39,7 +39,7 @@ class VerseController extends Controller
 
         return redirect()
             ->route('admin.verse.index')
-            ->with('success', 'Verse created successfully.');
+            ->with('success', 'Memory Verse created successfully.');
     }
 
     /**
@@ -78,7 +78,7 @@ class VerseController extends Controller
             'is_active'   => $request->has('is_active'),
         ]);
 
-        return back()->with('success', 'Verse updated successfully.');
+        return back()->with('success', 'Memory Verse updated successfully.');
     }
 
     /**
@@ -90,6 +90,6 @@ class VerseController extends Controller
 
         return redirect()
             ->route('admin.verse.index')
-            ->with('success', 'Verse deleted successfully.');
+            ->with('success', 'Memory Verse Deleted successfully.');
     }
 }

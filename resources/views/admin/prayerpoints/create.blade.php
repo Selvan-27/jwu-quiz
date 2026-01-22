@@ -3,7 +3,7 @@
 @section('title', 'Create Prayerpoints')
 
 @section('content')
-    <h1 class="h3 mb-4 text-gray-800">Create New Quiz</h1>
+    <h1 class="h3 mb-4 text-gray-800">Create New Prayerpoints</h1>
 
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -37,7 +37,7 @@
                 <!--    <label class="form-check-label" for="isActive">Publish immediately (Active)</label>-->
                 <!--</div>-->
 
-                <button type="submit" class="btn btn-primary">Create Quiz</button>
+                <button type="submit" class="btn btn-primary">Create Prayerpoints</button>
                 <a href="{{ route('admin.prayer.index') }}" class="btn btn-secondary">Cancel</a>
             </form>
         </div>

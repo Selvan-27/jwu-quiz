@@ -1,9 +1,9 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Edit Quiz')
+@section('title', 'Edit Prayerpoints')
 
 @section('content')
-    <h1 class="h3 mb-4 text-gray-800">Edit Quiz</h1>
+    <h1 class="h3 mb-4 text-gray-800">Edit Prayerpoints</h1>
 
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -36,7 +36,7 @@
                 <!--    <label class="form-check-label" for="isActive">Publish immediately (Active)</label>-->
                 <!--</div>-->
 
-                <button type="submit" class="btn btn-primary btn-block">Update Quiz</button>
+                <button type="submit" class="btn btn-primary btn-block">Update Prayerpoints</button>
                 <!--<a href="{{ route('admin.quizzes.index') }}" class="btn btn-secondary">Cancel</a>-->
             </form>
         </div>
