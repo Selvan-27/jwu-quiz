@@ -90,7 +90,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.verse.index') }}">
                     <i class="fas fa-fw fa-clipboard-list"></i>
-                    <span>Bible Verse</span></a>
+                    <span>Memory Verse</span></a>
             </li>
             
             
