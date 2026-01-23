@@ -20,17 +20,14 @@
 
 
     <div class="card" style="background: #7604c2;background: linear-gradient(135deg,rgba(118, 4, 194, 1) 0%, rgba(252, 176, 69, 1) 83%);color:white;">
-        <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Memory Verse</h3>
-        <!--<div class="flex justify-between">-->
-        <!--    <div>-->
-        <!--        <div style="font-size: 2rem; font-weight: 700;"></div>-->
-        <!--        <div style="opacity: 0.9;">Quizzes Taken</div>-->
-        <!--    </div>-->
-        <!--    <div>-->
-        <!--        <div style="font-size: 2rem; font-weight: 700;"></div>-->
-        <!--        <div style="opacity: 0.9;">Avg Score</div>-->
-        <!--    </div>-->
-        <!--</div>-->
+        <div class="flex justify-between">
+           <div>
+               <h3 style="margin-bottom: 1rem; font-size: 1.1rem;margin-top: 29px;">Memory Verse</h3>
+           </div>
+           <div>
+               <div style="font-size: 3rem; margin-bottom: 1rem;">📖</div>
+           </div> 
+       </div>
     </div>
 
 
