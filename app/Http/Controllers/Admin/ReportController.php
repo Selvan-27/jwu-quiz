@@ -24,7 +24,7 @@ class ReportController extends Controller
                 // But for now, let's use the score directly if it represents correct answers count
                 
                      $percentage = 0;
-                    $percentage = ($total_users / $totalAttempts) * 100;
+                    $percentage = ($totalAttempts/$total_users ) * 100;
                
             } else {
                 $avgScore = 0;
