@@ -25,9 +25,10 @@
                     <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
+                    <label>Mobile</label>
+                    <input type="text" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
                 </div>
+                
                 <div class="form-group">
                     <label>Password (Leave blank to keep current)</label>
                     <input type="password" name="password" class="form-control">

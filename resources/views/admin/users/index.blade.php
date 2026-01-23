@@ -18,7 +18,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Email</th>
+                            <th>Mobile</th>
                             <th>Role</th>
                             <th>Created At</th>
                             <th>Actions</th>
