@@ -18,7 +18,7 @@
                         <tr>
                             <th>Quiz Title</th>
                             <th>Total Attempts</th>
-                            <th>Avg. Correct Answers</th>
+                            <th>Avg User. Attend Quiz</th>
                             <!--<th>Pass Rate</th>-->
                             <th>Action</th>
                         </tr>
