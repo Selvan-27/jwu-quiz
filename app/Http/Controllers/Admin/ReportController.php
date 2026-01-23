@@ -30,6 +30,7 @@ class ReportController extends Controller
             } else {
                 $avgScore = 0;
                 $passRate = 0;
+                  $percentage = 0;
             }
 
             return [
