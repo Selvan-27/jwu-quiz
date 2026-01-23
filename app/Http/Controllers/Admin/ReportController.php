@@ -25,8 +25,7 @@ class ReportController extends Controller
                 
                      $percentage = 0;
                     $percentage = ($total_users / $totalAttempts) * 100;
-                
-                $passRate = ($passCount / $totalAttempts) * 100;
+               
             } else {
                 $avgScore = 0;
                 $passRate = 0;
@@ -37,7 +36,7 @@ class ReportController extends Controller
                 'title' => $quiz->title,
                 'total_attempts' => $totalAttempts,
                 'avg_score' => round($percentage, 1),
-                'pass_rate' => round($passRate, 1)
+                'pass_rate' => 0
             ];
         });
 
