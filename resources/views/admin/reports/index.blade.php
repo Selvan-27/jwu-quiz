@@ -32,7 +32,7 @@
                                 </a>
                             </td>
                             <td>{{ $data['total_attempts'] }}</td>
-                            <td>{{ $data['avg_score'] }}</td>
+                            <td>{{ $data['avg_score'] }} %</td>
                               <td> <a href="{{ route('admin.reports.show', \App\Models\Quiz::where('title', $data['title'])->first()->id) }}" class="btn btn-sm btn-primary" title="Manage Questions">
                                     <i class="fas fa-list"></i> Reports
                                 </a>
