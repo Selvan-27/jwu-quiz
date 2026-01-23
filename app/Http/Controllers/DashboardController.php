@@ -61,4 +61,18 @@ class DashboardController extends Controller
         
         return view('prayer.show', compact('data'));
     }
+
+ public function memoryverse_page()
+    {
+        $verse = verse::all();
+
+        return view('verse.index', compact('verse'));
+    }
+
+     public function verse($id)
+    {
+        $data = verse::findOrFail($id);
+        
+        return view('verse.show', compact('data'));
+    }
 }

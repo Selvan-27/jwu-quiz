@@ -83,6 +83,10 @@ Route::middleware('auth')->group(function () {
         Route::get('{id}', [DashboardController::class, 'prayer_points'])->name('show');
     });
 
+      Route::prefix('verse')->name('verse.')->group(function () {
+        Route::get('/', [DashboardController::class, 'memoryverse_page'])->name('index');
+        Route::get('{id}', [DashboardController::class, 'verse'])->name('show');
+    });
     // Admin Routes
     Route::prefix('admin')->name('admin.')->middleware([\App\Http\Middleware\AdminMiddleware::class])->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');

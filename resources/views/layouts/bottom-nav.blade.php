@@ -27,7 +27,7 @@
         <span>Prayers</span>
     </a>
 
-    <a href="#" class="nav-item">
+    <a href="{{ route('verse.index') }}" class="nav-item">
         <i class="fa-solid fa-book"></i>
         <span>Verse</span>
     </a>
