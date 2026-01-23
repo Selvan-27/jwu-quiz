@@ -11,12 +11,12 @@ class ReportController extends Controller
     {
          $quizzes = \App\Models\Quiz::withCount('attempts')->withCount('questions')->get();
 
-          $total_users = \App\Models\User::where('is_admin',0)->count();
+         
         
         $reportData = $quizzes->where('questions_count','!=',0)->map(function($quiz) {
             $attempts = $quiz->attempts;
             $totalAttempts = $attempts->count();
-            
+             $total_users = \App\Models\User::where('is_admin',0)->count();
             if ($totalAttempts > 0) {
                 $avgScore = $attempts->avg('score');
                 // Calculate percentage based on total questions (assuming standard scoring)
