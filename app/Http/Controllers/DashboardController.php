@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $query->where('user_id', auth()->id());
     })
     ->withCount('questions')
-    ->get();
+    ->paginate(15);
 
 
         $recentAttempts = QuizAttempt::where('user_id', auth()->id())

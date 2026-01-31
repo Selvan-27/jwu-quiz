@@ -82,6 +82,11 @@
     @endforelse
 </div>
 
+<!-- pagination -->
+ <div style="margin-top: 1.5rem;margin-bottom: 10rem;">
+          {{ $quizzes->links('pagination::bootstrap-5') }}
+        </div>
+        
 <!-- Bottom Navigation -->
 
  @include('layouts.bottom-nav')
