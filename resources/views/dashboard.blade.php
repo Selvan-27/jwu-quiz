@@ -41,8 +41,7 @@
     @if($quiz->questions_count)
         
     <div class="card">
-        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ $quiz->title }}</h3>  
-        <h5 style="font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem;float: right;" class="hk-button" ><span>{{ \Carbon\Carbon::parse($quiz->date)->format('d-m-Y') }}</span></h5>
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ $quiz->title }}</h3>  <h5 style="font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem;float: right;">{{ \Carbon\Carbon::parse($quiz->date)->format('d-m-Y') }}</h5>
         <p class="text-secondary" style="margin-bottom: 1rem; font-size: 0.9rem;">{{ Str::limit($quiz->description, 80) }}</p>
         
         <div class="flex justify-between items-center" style="margin-bottom: 1rem;">
