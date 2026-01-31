@@ -34,6 +34,7 @@ class ReportController extends Controller
 
             return [
                 'title' => $quiz->title,
+                 'date' => $quiz->date,
                 'total_attempts' => $totalAttempts,
                 'avg_score' => round($percentage),
                 'pass_rate' => 0
