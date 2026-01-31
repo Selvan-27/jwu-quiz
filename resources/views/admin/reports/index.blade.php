@@ -16,6 +16,7 @@
                 <table class="table table-bordered" width="100%" id="datatable">
                     <thead>
                         <tr>
+                            <th>#</th><th>Date</th>
                             <th>Quiz Title</th>
                             <th>Total Attempts</th>
                             <th>Avg User. Attend Quiz</th>
@@ -26,6 +27,8 @@
                     <tbody>
                         @foreach($reportData as $data)
                         <tr>
+                              <td>{{$loop->iteration}}</td>
+                             <td>  {{ $data['date'] }}</td>
                             <td>
                                 <a href="{{ route('admin.reports.show', \App\Models\Quiz::where('title', $data['title'])->first()->id) }}" style="font-weight: 600;">
                                     {{ $data['title'] }}
