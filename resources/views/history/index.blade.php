@@ -57,9 +57,11 @@
     @endforelse
 
     @if($attempts->hasPages())
-        <div style="margin-top: 1.5rem;">
-            {{ $attempts->links() }}
+        <!-- pagination -->
+        <div style="margin-top: 1.5rem;margin-bottom: 10rem;">
+          {{ $attempts->links('pagination::bootstrap-5') }}
         </div>
+        
     @endif
 </div>
 
