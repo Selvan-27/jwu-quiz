@@ -10,13 +10,34 @@
         </a>
     </div>
 
+
+
+
+
+
     <div class="card shadow mb-4">
+        <div class="card-header">
+
+        <div style="float: right;">
+                <form method="GET" action="{{ url()->current() }}">
+                <select name="month" onchange="this.form.submit()">
+                    <option value="">All months</option>
+                    @foreach(range(1,12) as $m)
+                        <option value="{{ $m }}" {{ request('month') == $m ? 'selected' : '' }}>
+                            {{ \Carbon\Carbon::create()->month($m)->format('F') }}
+                        </option>
+                    @endforeach
+                </select>
+            </form>
+</div>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" width="100%" cellspacing="0" id="datatable">
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Date</th>
                             <th>Title</th>
                             <!--<th>Time Limit</th>-->
                             <!--<th>Pass Score</th>-->
@@ -29,8 +50,8 @@
                         @foreach($quizzes as $quiz)
                         <tr>
                               <td>{{$loop->iteration}}</td>
-                            <td>
-                                
+                              <td>{{$quiz->date }}</td>
+                              <td>
                                 <a href="{{ route('admin.quizzes.show', $quiz->id) }}" style="font-weight: 600;">
                                     {{ $quiz->title }}
                                 </a>

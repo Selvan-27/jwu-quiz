@@ -10,9 +10,16 @@ class QuizController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $quizzes = \App\Models\Quiz::withCount('questions')->latest()->get();
+        // $quizzes = \App\Models\Quiz::withCount('questions')->latest()->get();
+         $quizzes = \App\Models\Quiz::withCount('questions')
+        ->when($request->month, function ($query) use ($request) {
+            $query->whereMonth('date', $request->month);
+        })
+        ->latest('date')
+        ->get();
+
         return view('admin.quizzes.index', compact('quizzes'));
     }
 
