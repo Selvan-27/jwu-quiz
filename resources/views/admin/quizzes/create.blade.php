@@ -24,6 +24,11 @@
                     <input type="text" name="title" class="form-control" value="{{ old('title') }}" required>
                 </div>
                 
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date" class="form-control"  value="{{ old('date') }}" required>
+                </div>
+
                 <div class="form-group">
                     <label>Description</label>
                     <textarea name="description" class="form-control" rows="6" >{{ old('description') }}</textarea>

@@ -9,6 +9,7 @@ class Quiz extends Model
     protected $fillable = [
         'title',
         'description',
+        'date',
         'time_limit',
         'passing_score',
         'prayerpoints',

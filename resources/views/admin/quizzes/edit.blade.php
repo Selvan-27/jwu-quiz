@@ -26,6 +26,11 @@
                 </div>
                 
                 <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date" class="form-control"  value="{{ old('date', $quiz->date) }}" required>
+                </div>
+
+                <div class="form-group">
                     <label>Description</label>
                     <textarea name="description" class="form-control" rows="3">{{ old('description', $quiz->description) }}</textarea>
                 </div>

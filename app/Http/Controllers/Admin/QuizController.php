@@ -26,6 +26,7 @@ class QuizController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             // 'description' => 'required|string',
+            'date'=>'required',
             'time_limit' => 'required|integer|min:1',
             'passing_score' => 'required|integer|min:0|max:100',
             'is_active' => 'boolean',
@@ -53,6 +54,7 @@ class QuizController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'date'=>'required',
             'description' => 'nullable|string',
             'time_limit' => 'required|integer|min:1',
             'passing_score' => 'required|integer|min:0|max:100',
