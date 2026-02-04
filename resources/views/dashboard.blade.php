@@ -35,15 +35,28 @@
     </div>
     @endif
 
-    <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 1rem;">Available Quizzes</h2>
+<h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 1rem;">
+    Available Quizzes
+</h2>
 
-    @forelse($quizzes as $quiz)
-    @if($quiz->questions_count)
-        
-    <div class="card">
-        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">{{ $quiz->title }}</h3>  <h5 style="font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem;float: right;">{{ \Carbon\Carbon::parse($quiz->date)->format('d-m-Y') }}</h5>
-        <p class="text-secondary" style="margin-bottom: 1rem; font-size: 0.9rem;">{{ Str::limit($quiz->description, 80) }}</p>
-        
+@forelse($quizzes as $quiz)
+    @php
+        $isToday = \Carbon\Carbon::parse($quiz->date)->isToday();
+    @endphp
+
+    <div class="card {{ $isToday ? 'today-quiz' : '' }}">
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">
+            {{ $quiz->title }}
+        </h3>
+
+        <h5 style="font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; float: right;">
+            {{ \Carbon\Carbon::parse($quiz->date)->format('d-m-Y') }}
+        </h5>
+
+        <p class="text-secondary" style="margin-bottom: 1rem; font-size: 0.9rem;">
+            {{ Str::limit($quiz->description, 80) }}
+        </p>
+
         <div class="flex justify-between items-center" style="margin-bottom: 1rem;">
             <div style="display: flex; gap: 1rem; font-size: 0.85rem;">
                 <span>📝 {{ $quiz->questions_count }} Questions</span>
@@ -51,36 +64,21 @@
             </div>
         </div>
 
-
-   <div class="row">
-            
-        <a href="{{ route('quiz.instructions', $quiz->id) }}" class="btn btn-primary" style="text-decoration: none;">Start Quiz</a>
-    
-        <!--@if(isset($quiz->prayerpoints))-->
-        <!--<a href="{{ route('quiz.prayer', $quiz->id) }}" class="btn btn-primary col-6" style="text-decoration: none;display: inline;width:50%">Prayer Points</a>-->
-        <!--@endif-->
+        <div class="row">
+            <a href="{{ route('quiz.instructions', $quiz->id) }}"
+               class="btn btn-primary"
+               style="text-decoration: none;">
+                Start Quiz
+            </a>
         </div>
-        
-        
-        <!--<div class="row">-->
-        <!--@if($quiz->questions_count!=0)-->
-            
-        <!--<a href="{{ route('quiz.instructions', $quiz->id) }}" class="btn btn-primary col-6" style="text-decoration: none;display: inline;">Start Quiz</a>-->
-        <!--@endif-->
-        <!--@if(isset($quiz->prayerpoints))-->
-        <!--<a href="{{ route('quiz.prayer', $quiz->id) }}" class="btn btn-primary col-6" style="text-decoration: none;display: inline;width:50%">Prayer Points</a>-->
-        <!--@endif-->
-        <!--</div>-->
-        
     </div>
-        @endif
-    @empty
+@empty
     <div class="card text-center">
         <div style="font-size: 3rem; margin-bottom: 1rem;">📚</div>
         <p class="text-secondary">No quizzes available at the moment.</p>
     </div>
-    @endforelse
-</div>
+@endforelse
+
 
 <!-- pagination -->
  <div style="margin-top: 1.5rem;margin-bottom: 10rem;">

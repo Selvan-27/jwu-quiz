@@ -462,6 +462,40 @@
                 font-size: 15px;
             }
         }
+
+        .today-quiz {
+    border: 2px solid #0d6efd;
+    background: linear-gradient(135deg, #e7f1ff, #ffffff);
+    animation: pulseGlow 1.8s infinite;
+    position: relative;
+}
+
+.today-quiz::before {
+    content: "🔥 Today's Quiz";
+    position: absolute;
+    top: -12px;
+    left: 12px;
+    background: #0d6efd;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 rgba(13, 110, 253, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 18px rgba(13, 110, 253, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(13, 110, 253, 0.4);
+    }
+}
+
+
     </style>
 
     @stack('styles')

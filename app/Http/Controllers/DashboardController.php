@@ -20,12 +20,15 @@ class DashboardController extends Controller
         //     ->withCount('questions')
         //     ->get();
         
-           $quizzes = Quiz::where('is_active', true)
-    ->whereDoesntHave('attempts', function ($query) {
-        $query->where('user_id', auth()->id());
-    })
-    ->withCount('questions')
-    ->paginate(15);
+       
+          $quizzes = Quiz::where('is_active', true)
+                ->whereDoesntHave('attempts', function ($query) {
+                    $query->where('user_id', auth()->id());
+                })
+                ->withCount('questions')
+                ->orderByRaw('DATE(date) = CURDATE() DESC')
+                ->orderBy('date', 'Desc')
+                ->paginate(15);
 
 
         $recentAttempts = QuizAttempt::where('user_id', auth()->id())
