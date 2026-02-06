@@ -15,11 +15,13 @@ class DashboardController extends Controller
     
     public function index()
     {
-    //return "here";
-        // $quizzes = Quiz::where('is_active', true)
-        //     ->withCount('questions')
-        //     ->get();
-        
+        // Fetch Top 10 Users by Total Score
+        $topUsers = \App\Models\QuizAttempt::with('user')
+            ->select('user_id', \Illuminate\Support\Facades\DB::raw('SUM(score) as total_score'))
+            ->groupBy('user_id')
+            ->orderByDesc('total_score')
+            ->limit(10)
+            ->get();
        
           $quizzes = Quiz::where('is_active', true)
                 ->whereDoesntHave('attempts', function ($query) {
@@ -47,7 +49,7 @@ class DashboardController extends Controller
                 ->avg('score'),
         ];
 
-        return view('dashboard', compact('quizzes', 'recentAttempts', 'stats'));
+        return view('dashboard', compact('quizzes', 'recentAttempts', 'stats','topUsers'));
     }
     
         

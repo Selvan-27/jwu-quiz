@@ -35,6 +35,47 @@
     </div>
     @endif
 
+
+        <!-- Stories Style Leaderboard -->
+    @if(isset($topUsers) && $topUsers->count() > 0)
+    <div style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h2 style="font-size: 1rem; font-weight: 700; color: #4F46E5;">Top Rankers</h2>
+            <a href="{{ route('rank') }}" style="font-size: 0.8rem; text-decoration: none;">View All</a>
+        </div>
+        
+        <div class="stories-container" style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem; scrollbar-width: none; -ms-overflow-style: none;">
+            @foreach($topUsers as $index => $ranking)
+            @php $rank = $index + 1; @endphp
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+                <div class="story-circle rank-{{ $rank }}" 
+                     style="width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; position: relative;
+                            background: {{ $rank == 1 ? 'linear-gradient(45deg, #FFD700, #FDB931)' : ($rank == 2 ? 'linear-gradient(45deg, #E0E0E0, #BDBDBD)' : ($rank == 3 ? 'linear-gradient(45deg, #CD7F32, #A0522D)' : '#f3f4f6')) }};
+                            padding: 3px;">
+                    <div style="width: 100%; height: 100%; background: white; border-radius: 50%; padding: 2px; overflow: hidden; position: relative;">
+                         <!-- Rank Number Overlay -->
+                         <div style="position: absolute; inset: 0; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg,rgba(118, 4, 194, 1) 0%, rgba(252, 176, 69, 1) 83%); color: white; font-weight: 700; font-size: 1.2rem;">
+                            #{{ $rank }}
+                         </div>
+                         <!-- Fallback Avatar (since we don't have real images yet) -->
+                         <div style="width: 100%; height: 100%; background: #e5e7eb; display: none;"></div> 
+                    </div>
+                </div>
+                <div style="font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem; text-align: center; max-width: 70px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    {{ explode(' ', $ranking->user->name)[0] }}
+                </div>
+                <div style="font-size: 0.65rem; color: #6b7280;">{{ $ranking->total_score }} pts</div>
+            </div>
+            @endforeach
+        </div>
+        <style>
+            .stories-container::-webkit-scrollbar { display: none; }
+            .story-circle.rank-1 { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); transform: scale(1.05); }
+        </style>
+    </div>
+    @endif
+
+
 <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 1rem;">
     Available Quizzes
 </h2>

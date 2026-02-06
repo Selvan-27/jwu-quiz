@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     
     // Dashboard
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
-    //Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/rank', [DashboardController::class, 'rank'])->name('rank');
     
     // Quiz Routes
     Route::prefix('quiz')->name('quiz.')->group(function () {
