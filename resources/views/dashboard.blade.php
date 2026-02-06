@@ -41,7 +41,7 @@
     <div style="margin-bottom: 2rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
             <h2 style="font-size: 1rem; font-weight: 700; color: #4F46E5;">Top Rankers</h2>
-            <a href="{{ route('rank') }}" style="font-size: 0.8rem; text-decoration: none;">View All</a>
+            <!-- <a href="{{ route('rank') }}" style="font-size: 0.8rem; text-decoration: none;">View All</a> -->
         </div>
         
         <div class="stories-container" style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem; scrollbar-width: none; -ms-overflow-style: none;">
