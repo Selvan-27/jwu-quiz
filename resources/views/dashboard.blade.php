@@ -80,12 +80,19 @@
     Available Quizzes
 </h2>
 
-@forelse($quizzes as $quiz)
+@foreach($Todayquizzes as $quiz)
     @php
-        $isToday = \Carbon\Carbon::parse($quiz->date)->isToday();
+        $quizDate = \Carbon\Carbon::parse($quiz->date);
+        $now = \Carbon\Carbon::now();
+
+        $isToday = $quizDate->isToday();
+        $after930 = $now->format('H:i') >= '21:30';
     @endphp
 
-    <div class="card {{ $isToday ? 'today-quiz' : '' }}">
+@if($isToday && $after930)
+
+        <div class="card today-quiz">
+    <!-- <div class="card {{ $isToday ? 'today-quiz' : '' }}"> -->
         <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">
             {{ $quiz->title }}
         </h3>
@@ -113,12 +120,50 @@
             </a>
         </div>
     </div>
-@empty
-    <div class="card text-center">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">📚</div>
-        <p class="text-secondary">No quizzes available at the moment.</p>
+@endif
+
+@endforeach
+
+
+        <div class="card">
+
+        <ul>
+
+      @forelse($quizzes as $quiz)
+<li style="
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+    font-size:0.9rem;
+">
+    
+    <!-- LEFT SIDE : Quiz info -->
+    <div>
+        <div style="font-weight:600;">📝 {{ $quiz->title }}</div>
+        <div style="color:#6b7280; font-size:0.8rem;">📅 {{ \Carbon\Carbon::parse($quiz->date)->format('d-m-Y') }}</div>
     </div>
+
+    <!-- RIGHT SIDE : Button -->
+    <a href="{{ route('quiz.instructions', $quiz->id) }}"
+       class="btn btn-primary btn-sm"
+       style="padding:6px 16px; font-size:0.85rem;width: 110px; text-decoration: none;">
+        Start Quiz
+    </a>
+
+</li>
+@empty
+<p>No quizzes available</p>
 @endforelse
+
+
+        </ul>
+
+
+      
+
+
 
 
 <!-- pagination -->

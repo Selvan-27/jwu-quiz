@@ -452,9 +452,9 @@
                 gap: 10px;
             }
 
-            .page-item:not(.previous):not(.next):not(.active) {
+            /* .page-item:not(.previous):not(.next):not(.active) {
                 display: none;
-            }
+            } */
 
             .page-link {
                 min-width: 44px;

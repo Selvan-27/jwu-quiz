@@ -22,13 +22,19 @@ class DashboardController extends Controller
             ->orderByDesc('total_score')
             ->limit(10)
             ->get();
-       
-          $quizzes = Quiz::where('is_active', true)
-                ->whereDoesntHave('attempts', function ($query) {
+            
+          $Todayquizzes = Quiz::whereDoesntHave('attempts', function ($query) {
                     $query->where('user_id', auth()->id());
                 })
                 ->withCount('questions')
                 ->orderByRaw('DATE(date) = CURDATE() DESC')
+                ->get();
+
+          $quizzes = Quiz::whereDoesntHave('attempts', function ($query) {
+                    $query->where('user_id', auth()->id());
+                })
+                ->withCount('questions')
+                ->orderByRaw('DATE(date) != CURDATE() DESC')
                 ->orderBy('date', 'Desc')
                 ->paginate(15);
 
@@ -49,7 +55,7 @@ class DashboardController extends Controller
                 ->avg('score'),
         ];
 
-        return view('dashboard', compact('quizzes', 'recentAttempts', 'stats','topUsers'));
+        return view('dashboard', compact('quizzes', 'recentAttempts', 'stats','topUsers', 'Todayquizzes'));
     }
     
         
