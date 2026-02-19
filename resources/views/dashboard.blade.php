@@ -28,8 +28,8 @@
             </div>
             <div>
                 <a href="{{ route('history.index') }}" style="color: white;font-weight: bolder;text-decoration: none;" >
-                <div style="font-size: 2rem; font-weight: 700;">📊</div>
-                <div style="opacity: 0.9;">Results</div> </a>
+                <div style="font-size: 2rem; font-weight: 700;text-align: center;"> <i class="fa fa-trophy" aria-hidden="true"></i></div>
+                <div style="opacity: 0.9;">View Results</div> </a>
              </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                          <div style="width: 100%; height: 100%; background: #e5e7eb; display: none;"></div> 
                     </div>
                 </div>
-                <div style="font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem; text-align: center; max-width: 70px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                <div style="text-transform: uppercase;font-size: 0.75rem; font-weight: 600; margin-top: 0.25rem; text-align: center; max-width: 70px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                     {{ explode(' ', $ranking->user->name)[0] }}
                 </div>
                 <div style="font-size: 0.65rem; color: #6b7280;">{{ $ranking->total_score }} pts</div>
