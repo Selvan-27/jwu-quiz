@@ -34,7 +34,7 @@ class DashboardController extends Controller
                     $query->where('user_id', auth()->id());
                 })
                 ->withCount('questions')
-                ->orderByRaw('DATE(date) != CURDATE() DESC')
+                ->orderByRaw('DATE(date) < CURDATE() DESC')
                 ->orderBy('date', 'Desc')
                 ->paginate(15);
 
