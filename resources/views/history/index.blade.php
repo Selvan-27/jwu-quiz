@@ -9,6 +9,23 @@
         <p class="text-secondary">Track your quiz performance</p>
     </div>
 
+
+
+
+          <div class="card" style="background: #7604c2;background: linear-gradient(135deg,rgba(118, 4, 194, 1) 0%, rgba(252, 176, 69, 1) 83%);color:white;">
+        <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Results Summary</h3>
+        <div class="flex justify-between">
+           <div>
+               <div style="font-size: 2rem; font-weight: 700;">{{ $stats['total_attempts'] }}</div>
+               <div style="opacity: 0.9;">Quizzes Taken</div>
+           </div>
+           <div>
+               <div style="font-size: 2rem; font-weight: 700;">{{ $stats['total_score'] }}</div>
+               <div style="opacity: 0.9;">Total Score</div>
+           </div>
+        </div>
+    </div>
+
     @forelse($attempts as $attempt)
         @php
             $percentage = ($attempt->score / $attempt->total_questions) * 100;

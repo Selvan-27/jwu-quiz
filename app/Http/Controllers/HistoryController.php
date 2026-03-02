@@ -15,7 +15,16 @@ class HistoryController extends Controller
             ->latest()
             ->paginate(15);
 
-        return view('history.index', compact('attempts'));
+        $stats = [
+            'total_attempts' => QuizAttempt::where('user_id', auth()->id())
+                ->where('status', 'completed')
+                ->count(),
+            'total_score' => QuizAttempt::where('user_id', auth()->id())
+                ->where('status', 'completed')
+                ->sum('score'),
+        ];
+
+        return view('history.index', compact('attempts','stats'));
     }
 
     public function show($attemptId)

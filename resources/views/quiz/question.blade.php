@@ -5,7 +5,8 @@
 @section('content')
 <!-- Timer -->
 <div class="timer" id="timer">
-    <span id="timer-display">{{ $attempt->quiz->time_limit }}:00</span>
+    <!-- <span id="timer-display">{{ $attempt->quiz->time_limit }}:00</span> -->
+     <span> Bible Quiz </span>
 </div>
 
 <div class="container" style="padding-top: 5rem; padding-bottom: 2rem;">
@@ -17,6 +18,25 @@
     <div style="text-align: center; margin-bottom: 1.5rem;">
         <div class="text-secondary" style="font-size: 0.9rem;">Question {{ $questionNumber }} of {{ $questions->count() }}</div>
     </div>
+
+    <!-- Toast Message -->
+    <div id="toast" style="
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #f44336; /* red for warning */
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        display: none;
+        z-index: 1000;
+        font-weight: 500;
+    ">
+        Please select an answer first.
+    </div>
+
 
     <div class="card">
         <h2 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; line-height: 1.6;">
@@ -48,7 +68,7 @@
 
         @if($questionNumber < $questions->count())
         <a href="{{ route('quiz.question', ['attemptId' => $attempt->id, 'questionNumber' => $questionNumber + 1]) }}" 
-           class="btn btn-primary" style="text-decoration: none; flex: 1;">Next</a>
+           class="btn btn-primary next-btn" style="text-decoration: none; flex: 1;">Next</a>
         @else
         <button onclick="showSubmitModal()" class="btn btn-success" style="flex: 1;">Submit Quiz</button>
         @endif
@@ -78,34 +98,60 @@
     const timeLimit = {{ $attempt->quiz->time_limit }};
     const startedAt = new Date('{{ $attempt->started_at }}');
 
+
+    function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.style.display = 'block';
+    toast.style.opacity = '1';
+
+    // Fade out after 3 seconds
+    setTimeout(() => {
+        toast.style.transition = 'opacity 0.5s';
+        toast.style.opacity = '0';
+        setTimeout(() => toast.style.display = 'none', 500);
+    }, 3000);
+}
+
+
+    // Prevent Next if no option is selected
+document.querySelectorAll('.next-btn').forEach(btn => {
+    btn.addEventListener('click', function(event) {
+        if (!selectedOptionId) {
+            event.preventDefault(); // stop navigation
+            // alert('Please select an answer first.'); // show message
+             showToast('Please select an answer first.'); // nice toast message
+        }
+    });
+});
+
     // Timer functionality
-    function updateTimer() {
-        const now = new Date();
-        const elapsed = Math.floor((now - startedAt) / 1000);
-        const remaining = (timeLimit * 60) - elapsed;
+    // function updateTimer() {
+    //     const now = new Date();
+    //     const elapsed = Math.floor((now - startedAt) / 1000);
+    //     const remaining = (timeLimit * 60) - elapsed;
 
-        if (remaining <= 0) {
-            // Time's up - auto submit
-            document.querySelector('form[action*="submit"]').submit();
-            return;
-        }
+    //     if (remaining <= 0) {
+    //         // Time's up - auto submit
+    //         document.querySelector('form[action*="submit"]').submit();
+    //         return;
+    //     }
 
-        const minutes = Math.floor(remaining / 60);
-        const seconds = remaining % 60;
-        const display = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    //     const minutes = Math.floor(remaining / 60);
+    //     const seconds = remaining % 60;
+    //     const display = `${minutes}:${seconds.toString().padStart(2, '0')}`;
         
-        document.getElementById('timer-display').textContent = display;
+    //     document.getElementById('timer-display').textContent = display;
 
-        const timerElement = document.getElementById('timer');
-        if (remaining <= 60) {
-            timerElement.classList.add('danger');
-        } else if (remaining <= 300) {
-            timerElement.classList.add('warning');
-        }
-    }
+    //     const timerElement = document.getElementById('timer');
+    //     if (remaining <= 60) {
+    //         timerElement.classList.add('danger');
+    //     } else if (remaining <= 300) {
+    //         timerElement.classList.add('warning');
+    //     }
+    // }
 
-    setInterval(updateTimer, 1000);
-    updateTimer();
+
 
     // Option selection
     function selectOption(optionId) {
