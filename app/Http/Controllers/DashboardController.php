@@ -59,11 +59,11 @@ class DashboardController extends Controller
                 ->where('status', 'in_progress')
                 ->get();
 
-            if ($recentAttemptsPending->isNotEmpty()) {
-                QuizAttempt::where('user_id', auth()->id())
-                    ->where('status', 'in_progress')
-                    ->delete();
-            }
+            // if ($recentAttemptsPending->isNotEmpty()) {
+            //     QuizAttempt::where('user_id', auth()->id())
+            //         ->where('status', 'in_progress')
+            //         ->delete();
+            // }
 
         return view('dashboard', compact('quizzes', 'recentAttempts', 'stats','topUsers', 'Todayquizzes'));
     }
