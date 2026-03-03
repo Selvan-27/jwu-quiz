@@ -24,6 +24,16 @@ class HistoryController extends Controller
                 ->sum('score'),
         ];
 
+          $recentAttemptsPending = QuizAttempt::where('user_id', auth()->id())
+                ->where('status', 'in_progress')
+                ->get();
+
+            if ($recentAttemptsPending->isNotEmpty()) {
+                QuizAttempt::where('user_id', auth()->id())
+                    ->where('status', 'in_progress')
+                    ->delete();
+            }
+
         return view('history.index', compact('attempts','stats'));
     }
 
