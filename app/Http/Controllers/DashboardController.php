@@ -23,7 +23,7 @@ class DashboardController extends Controller
             ->limit(10)
             ->get();
             
-          $Todayquizzes = Quiz::whereDoesntHave('attempts', function ($query) {
+         return $Todayquizzes = Quiz::whereDoesntHave('attempts', function ($query) {
                     $query->where('user_id', auth()->id());
                 })
                 ->withCount('questions')
